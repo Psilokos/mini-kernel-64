@@ -1,0 +1,9 @@
+GNU = https://ftp.gnu.org/gnu
+
+BINUTILS_VERSION = 2-31.1
+BINUTILS_TARBALL = binutils-$(BINUTILS_VERSION).tar.xz
+BINUTILS_URL = $(GNU)/binutils/$(BINUTILS_TARBALL)
+
+GCC_VERSION = 8.2.0
+GCC_TARBALL = gcc-$(GCC_VERSION)
+GCC_URL = $(GNU)/gcc/gcc-$(GCC_VERSION)/$(GCC_TARBALL)

@@ -1,0 +1,34 @@
+#! /usr/bin/sh
+
+check_pkg()
+{
+    if ! $1 --version >/dev/null 2>&1; then
+        missing_pkgs=("${missing_pkgs[@]}" "$1")
+    fi
+}
+
+check_lib()
+{
+    if [ ! -f /usr/lib/lib$1.so ]; then
+        missing_pkgs=("${missing_pkgs[@]}" "$1")
+    fi
+}
+
+check_texinfo()
+{
+    if ! info --version >/dev/null 2>&1; then
+        missing_pkgs=("${missing_pkgs[@]}" 'texinfo')
+    fi
+}
+
+missing_pkgs=()
+
+check_pkg make
+check_pkg bison
+check_pkg flex
+check_lib gmp
+check_lib mpc
+check_lib mpfr
+check_texinfo
+
+cpu_number=`lscpu -p | grep -v \# | wc -l`
